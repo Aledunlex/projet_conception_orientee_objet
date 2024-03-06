@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1452</x>
+      <y>594</y>
+      <w>220</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>Competitor
+--
+-name: String
+--
++Competitor(String name): ctor
++getName(): String
++toString(): String
++hashCode(): int
++equals(Object obj): boolean
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1078</x>
+      <y>517</y>
+      <w>352</w>
+      <h>407</h>
+    </coordinates>
+    <panel_attributes>/Competition/
+--
+#competitors: List&lt;Competitor&gt;
+#match: Match
+#ranking: Map&lt;Competitor, Integer&gt;: ranking
+--
++Competition(String name, 
+     List&lt;Competitor&gt; competitors): ctor
++reactToMatch(Match match)
++register(ObserverInterface observer)
++unRegister(ObserverInterface observer)
++getScore(Competitor competitor): int
++addOnePoint(Competitor competitor)
++setCompetitorScore(Competitor competitor, 
+     int score)
++play()
+#play(List&lt;Competitor&gt; competitors)
+#playMatch(Competitor c1, Competitor c2)
++ranking(): Map&lt;Competitor, Integer&gt;
++setRanking(Map&lt;Competitor, Integer&gt; rank)
+-displayRanking()
++getCompetitors(): List&lt;Competitor&gt;
++getMatch(): Match
++equals(Object o): boolean
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1441</x>
+      <y>748</y>
+      <w>429</w>
+      <h>286</h>
+    </coordinates>
+    <panel_attributes>/Match/
+--
+#winner: Competitor
+#loser: Competitor
+#matchObservers: Collection&lt;MatchObservers&gt;
+--
++Match(): ctor
+#play(Competitor c1, Competitor c2)
+#determineWinnerAndLoser(List&lt;Competitor&gt; couple)
++getWinner(): Competitor
+#setWinner(Competitor winner)
++getLoser(): Competitor
+#setLoser(Competitor loser)
++equals(Object obj): boolean
++register(MatchObserver)
++unRegister(MatchObserver)
++getObservers(): Collection&lt;MatchObservers&gt;
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1265</x>
+      <y>154</y>
+      <w>594</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>Tournament
+--
+-nbOfPlayedMatches: Map&lt;Competitor, Integer&gt;
+--
++Tournament(String name, List&lt;Competitor&gt; competitors): ctor
+#play(List&lt;Competitor&gt; competitors)
++reactToMatch(Match match)
++getNbOfPlayedMatches(Competitor competitor): int
++addNbOfPlayedMatch(Competitor competitor)
++setNbOfPlayedMatch(Competitor competitor, int nb)
+-playOneRound(List&lt;Competitor&gt; canPlay, int roundNumber): List&lt;Competitor&gt;
+-updateListOfCompetitors(List&lt;Competitor&gt; canPlay): List&lt;Competitor&gt;
+-pickAnyCompetitor(List&lt;Competitor&gt; canPlay, int roundNumber): Competitor
+-pickAnyOtherCompetitor(List&lt;Competitor&gt; canPlay, int roundNumber,
+      Competitor competitor): Competitor
+-checkIfEveryonePlayed(List&lt;Competitor&gt; newCanPlay, int roundNumber): boolean
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>715</x>
+      <y>1078</y>
+      <w>275</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>Displayer
+--
+-uniqueInstance: Displayer
+-enabled: boolean
+--
+-Displayer(): ctor
++getInstance(): Displayer
+-displayTextSTDOUT(String text)
++useDisplay(String text)
++useDisplay(Object obj)
++setEnabled(boolean enabled)
++getEnabled(): boolean
++displaySortedMap(Map&lt;Competitor, 
+     Integer&gt; map, boolean reversed)
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1001</x>
+      <y>1177</y>
+      <w>407</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>MathsPlus
+--
+-uniqueInstance: MathsPlus
+--
+-MathsPlus(): ctor
++getInstance(): MathsPlus
++isPowerOfTwo(int numb): boolean
++log2(int numb): int
++balancedSplit(int numb1, int numb2): LinkedList&lt;Integer&gt;
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1100</x>
+      <y>44</y>
+      <w>407</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>League
+--
+--
++League(String name, List&lt;Competitor&gt; competitors): ctor
+#play(List&lt;Competitor&gt; competitors)
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1441</x>
+      <y>1100</y>
+      <w>429</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>MatchRegular
+--
+--
+#determineWinnerAndLoser(List&lt;Competitor&gt; couple)
+
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1232</x>
+      <y>110</y>
+      <w>33</w>
+      <h>429</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;370.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1254</x>
+      <y>407</y>
+      <w>132</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>12.0;100.0;10.0;40.0;100.0;40.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1639</x>
+      <y>1023</y>
+      <w>33</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>704</x>
+      <y>1045</y>
+      <w>715</w>
+      <h>297</h>
+    </coordinates>
+    <panel_attributes>util
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1430</x>
+      <y>1067</y>
+      <w>451</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>matches
+--
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1012</x>
+      <y>473</y>
+      <w>869</w>
+      <h>583</h>
+    </coordinates>
+    <panel_attributes>SportsCompet
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>308</x>
+      <y>11</y>
+      <w>1573</w>
+      <h>429</h>
+    </coordinates>
+    <panel_attributes>competitions
+--
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>22</x>
+      <y>605</y>
+      <w>957</w>
+      <h>396</h>
+    </coordinates>
+    <panel_attributes>strategies
+--
+bg=Gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>132</y>
+      <w>429</w>
+      <h>286</h>
+    </coordinates>
+    <panel_attributes>Master
+--
+-groupStage: GroupStage
+-strategy: Strategy
+--
++Master(String name, List&lt;Competitor&gt; competitors,
+         Strategy strategy, int nbGroups): ctor
++register(MatchObserver)
+#play(List&lt;Competitor&gt; competitors)
+-makeTeams(List&lt;Competitor&gt; competitors, int nbGroups)
+-playPools():List&lt;Competitor&gt;
+-determineFinalists():List&lt;Competitor&gt;
+-playFinal(List&lt;Competitor&gt; finalists)
++equals(Object obj): boolean
++getStrategy(): Strategy
++getGroupStage(): GroupStage
+-checkStratValidity(): boolean
+
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1144</x>
+      <y>407</y>
+      <w>88</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;100.0;60.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1012</x>
+      <y>1078</y>
+      <w>396</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>MapUtil
+--
+--
++sortByDescendingValue(Map&lt;K, V&gt; map): Map&lt;K, V&gt;
++sortedMapToLinkedList
+      (Map&lt;K, V&gt; map): LinkedList&lt;K, V&gt;
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1089</x>
+      <y>935</y>
+      <w>308</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>/&lt;&lt;interface&gt;&gt;/
+Strategy
+--
+--
++determineFinalists(List&lt;League&gt; groups):
+        Set&lt;Competitor&gt;)
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>44</x>
+      <y>649</y>
+      <w>231</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>EverySecondBest
+--
+--
++EverySecondBest(Strategy
+         element): ctor
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>44</x>
+      <y>737</y>
+      <w>231</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>EveryHighestRanked
+--
+--
++EveryHighestRanked(Strategy
+         element): ctor
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>44</x>
+      <y>825</y>
+      <w>231</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>EverySecondLowest
+--
+--
++EverySecondLowest(Strategy
+         element): ctor
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>44</x>
+      <y>913</y>
+      <w>231</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>EveryLowestRanked
+--
+--
++EveryLowestRanked(Strategy
+         element): ctor
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>792</y>
+      <w>308</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>/StrategyDecorator/
+--
+-element: Strategy
+--
++StrategyDecorator(Strategy element): ctor
++determineFinalists(List&lt;League&gt; groups):
+        Set&lt;Competitor&gt;)
+
+
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>671</y>
+      <w>308</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>StrategyBase
+--
+--
++determineFinalists(List&lt;League&gt; groups):
+        Set&lt;Competitor&gt;)
+
+layer=1
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>308</x>
+      <y>726</y>
+      <w>319</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>SelectionByRankStrategy
+--
+-isReversed: boolean
+-indexes: Set&lt;Integer&gt;
+--
++determineFinalists(List&lt;League&gt; groups
+     , boolean isReversed): Set&lt;Competitor&gt;)
++addAnIndex(int index)
++isReversed(): boolean
++getIndexes(): Set&lt;Integer&gt;
++setIndexes(Set&lt;Integer&gt; indexes)
++equals(Object obj): boolean
+bg=white
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>682</y>
+      <w>77</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>50.0;40.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>913</y>
+      <w>77</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>50.0;10.0;50.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>825</y>
+      <w>66</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;20.0;10.0;20.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>748</y>
+      <w>66</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;50.0;20.0;50.0;20.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>957</x>
+      <y>693</y>
+      <w>154</w>
+      <h>286</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>120.0;240.0;70.0;240.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>957</x>
+      <y>880</y>
+      <w>154</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>120.0;110.0;30.0;110.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>836</y>
+      <w>66</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>154</y>
+      <w>407</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>GroupStage
+--
+-groups: List&lt;List&lt;Competitor&gt; &gt;
+-pools: List&lt;League&gt;
+--
++GroupStage(String name, List&lt;Competitor&gt; competitors,
+         int nbGroups): ctor
+#play(List&lt;Competitor&gt; competitors)
++register(MatchObserver)
++ranking(): Map&lt;Competitor, Integer&gt;
+-makeTeams(List&lt;Competitor&gt; competitors, int nbGroups)
+-playPools():List&lt;Competitor&gt;
++equals(Object obj): boolean
++getGroups(): List&lt;List&lt;Competitor&gt; &gt;
++getPools(): List&lt;League&gt;
+-signUpCompetitorsForPools()
+
+layer=2
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>517</x>
+      <y>407</y>
+      <w>583</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>510.0;110.0;10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1529</x>
+      <y>506</y>
+      <w>308</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>/&lt;&lt;interface&gt;&gt;/
+ObserverInterface
+--
++reactToMatch(Match match)
+
+bg=white
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1914</x>
+      <y>528</y>
+      <w>407</w>
+      <h>440</h>
+    </coordinates>
+    <panel_attributes>matchObservers
+--
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1947</x>
+      <y>561</y>
+      <w>253</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>/MatchObserver/
+--
+#name: String
+--
++MatchObserver(String name): ctor
+
+bg=white
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1826</x>
+      <y>517</y>
+      <w>143</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;70.0;110.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1969</x>
+      <y>627</y>
+      <w>44</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>12.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1419</x>
+      <y>572</y>
+      <w>561</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>482.0;40.0;390.0;40.0;390.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1925</x>
+      <y>693</y>
+      <w>220</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>Journalist
+--
++Journalist(String name): ctor
++reactToMatch(Match match)
+
+bg=white
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1947</x>
+      <y>814</y>
+      <w>363</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>Bookmaker
+--
++Bookmaker(String name): ctor
++reactToMatch(Match match)
+-updateOdds(Competitor winner, Competitor loser)
++getOdds(): Map&lt;Competitor, Integer&gt;
+-getSortedOdds(): Map&lt;Competitor, Integer&gt;
++displayOdds()
+
+bg=white
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2167</x>
+      <y>627</y>
+      <w>44</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>12.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+</diagram>
